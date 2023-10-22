@@ -1,0 +1,28 @@
+interface Shape {
+    void draw();
+}
+class Circle {
+    public void drawCircle() {
+        System.out.println("Draw a Circle");
+    }
+}
+
+class CircleAdapter implements Shape {
+    private Circle circle;
+
+    public CircleAdapter(Circle circle) {
+        this.circle = circle;
+    }
+
+    public void draw() {
+        circle.drawCircle();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Circle circle = new Circle();
+        Shape shape = new CircleAdapter(circle);
+        shape.draw();
+    }
+}

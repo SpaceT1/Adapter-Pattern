@@ -1,0 +1,74 @@
+interface Shape {
+    void draw();
+} 
+
+class Circle {
+    public void drawCircle() {
+        System.out.println("Draw a Circle");
+    }
+}
+
+class Rectangle {
+    public void drawRectangle() {
+        System.out.println("Draw a Rectangle");
+    }
+}
+
+class Triangle {
+    public void drawTriangle() {
+        System.out.println("Draw a Triangle");
+    }
+}
+
+class CircleAdapter implements Shape {
+    private Circle circle;
+
+    public CircleAdapter(Circle circle) {
+        this.circle = circle;
+    }
+
+    public void draw() {
+        circle.drawCircle();
+    }
+}
+
+class RectangleAdapter implements Shape {
+    private Rectangle rectangle;
+
+    public RectangleAdapter(Rectangle rectangle) {
+        this.rectangle = rectangle;
+    }
+
+    public void draw() {
+        rectangle.drawRectangle();
+    }
+}
+
+class TriangleAdapter implements Shape {
+    private Triangle triangle;
+
+    public TriangleAdapter(Triangle triangle) {
+        this.triangle = triangle;
+    }
+
+    public void draw() {
+        triangle.drawTriangle();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Circle circle = new Circle();
+        Rectangle rectangle = new Rectangle();
+        Triangle triangle = new Triangle();
+
+        Shape circleShape = new CircleAdapter(circle);
+        Shape rectangleShape = new RectangleAdapter(rectangle);
+        Shape triangleShape = new TriangleAdapter(triangle);
+
+        System.out.println("Drawing shapes:");
+        circleShape.draw();
+        rectangleShape.draw();
+        triangleShape.draw();
+    }
+}
